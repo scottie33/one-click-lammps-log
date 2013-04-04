@@ -4,9 +4,11 @@ import sys,os
 #print len(sys.argv)
 if len(sys.argv) < 2: 
 	#raise StandardError, "Syntax: readlog.py [keyword: to start reading] [outputfilename]"
-	print "\n This command is used to treat log file of lammps to extract what you need."
+	print "\n This command is used to load log file from lammps production run to create figures."
 	print " after using this, do not forget using [\"showdata.bash\"] to see your data.\n"
-	print " [syntax]: readlog.py logfilename [keyword: to start reading] [outputfilename]\n"
+	print " [syntax]: readlog.py logfilename [keyword: 1st dump KW] [outputfilename]\n"
+        print " example: readlog.py example.log Step example.inputfornextcmd"
+        print " keyword is set defaultly to Step, which is normally the first col of your dump..."
 	print " if any problem, improvement made, or any Q, please contact me: leiw@ustc.edu.cn"
 	exit(-1)
 

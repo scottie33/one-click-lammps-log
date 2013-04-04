@@ -3,6 +3,7 @@
 if [ $# -lt 1 ]; then
 	echo " " 
 	echo " cmd filename "
+        echo " example: ./create_html.bash example.inputfornextcmd"
 	echo " if any problem, improvement made, or any Q, please contact me: leiw@ustc.edu.cn"
 	echo " "
 	exit -1

@@ -4,6 +4,11 @@ you can use the following cli to see your data-fig:
 3, create_html.bash 
 just hit them in your command line to see 'how to'
 
+e.g.:
+
+./readlog.py example.log Step example.inputfornextcmd 
+./create_html.bash example.inputfornextcmd
+
 O(ne) C(lick) S(eries): Lammps .log file.
 Dependencies: bash, python, gnuplot;
 Comman Line Format : cmd log-filename.
