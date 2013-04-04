@@ -6,10 +6,15 @@ just hit them in your command line to see 'how to'
 
 e.g.:
 
+./readlog.py example.log
+./create_html.bash example.gnuplot.dat (this file is created by last command)
+
+or 
+
 ./readlog.py example.log Step example.inputfornextcmd 
 ./create_html.bash example.inputfornextcmd
 
-for the keyword, we shall set it the 1st keyword of dump line in your lammps input script, normally "Step"
+for the [keyword], we shall set it the 1st keyword of dump keywords in your .log file, normally "Step"
 
 O(ne) C(lick) S(eries): Lammps .log file.
 Dependencies: bash, python, gnuplot;
