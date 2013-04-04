@@ -1,0 +1,12 @@
+
+you can use the following cli to see your data-fig:
+1, readlog.py
+3, create_html.bash 
+just hit them in your command line to see 'how to'
+
+O(ne) C(lick) S(eries): Lammps .log file.
+Dependencies: bash, python, gnuplot;
+Comman Line Format : cmd log-filename.
+description: you will have a .html (or all figures in .eps) of the information you are able to get from .log from a Lammps production run.
+
+if any problem, improvement made, or any Q, please contact me: leiw@ustc.edu.cn
