@@ -7,7 +7,7 @@ just hit them in your command line to see 'how to'
 e.g.:
 
 ./readlog.py example.log
-./create_html.bash example.gnuplot.dat (this file is created by last command)
+./create_html.bash example.gnuplot.dat (this file is created by the last command)
 
 or 
 
