@@ -9,6 +9,8 @@ e.g.:
 ./readlog.py example.log Step example.inputfornextcmd 
 ./create_html.bash example.inputfornextcmd
 
+for the keyword, we shall set it the 1st keyword of dump line in your lammps input script, normally "Step"
+
 O(ne) C(lick) S(eries): Lammps .log file.
 Dependencies: bash, python, gnuplot;
 Comman Line Format : cmd log-filename.
