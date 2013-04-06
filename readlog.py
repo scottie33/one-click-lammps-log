@@ -8,9 +8,9 @@ if len(sys.argv) < 2:
 	#print " after using this, do not forget using [\"showdata.bash\"] to see your data.\n"
 	print " [syntax]: readlog.py logfilename [keyword: 1st KeyWord to dump] [outputfilename]\n"
 	print " example: readlog.py example.log Step example.inputfornextcmd "
-	print " keyword is set defaultly to Step, which is normally the first col of your dump..."
-	print " uh... again, for keyword, maybe you need2 have a look at your .log file..."
-	print " if any problem, improvement made, or any Q, please contact me: [ leiw@ustc.edu.cn ]"
+	print "\n keyword is set defaultly to \"Step\", which is normally the first col of your dump..."
+	print " uh... again, for keyword, maybe you need2 have a look at your .log file...\n"
+	print " if any problem, improvement made, or any Q, please contact me: [ leiw@ustc.edu.cn ]\n"
 	exit(-1)
 
 inpfile = sys.argv[1]
