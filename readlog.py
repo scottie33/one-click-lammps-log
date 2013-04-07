@@ -67,28 +67,35 @@ while True:
 		print ""
 	if len(elements)!=0 and elements[0] == "run" :
 		runsteps=elements[1]
-	if flagkeyword==1 and runsteps !=0 :
+	if flagkeyword==1:# and runsteps!=0 :
 		break;
-if flagkeyword==0 or runsteps==0:
+if flagkeyword==0:
 	print " no records in [",inpfile,"]."
 	exit -1
 else :
-	print "\n there are",runsteps,"(or divided by a numb) data, here we go~"
+	if runsteps!=0:
+		print "\n there are",runsteps,"(or divided by a numb) data, here we go~"
+	else:
+		print "\n start reading data without runsteps, but will end at \"Loop\""
 
 #numerator = 0
 while True:
 	line = inpfp.readline()
 	elements = line.split()
+	if elements[0]=="Loop":
+		break;
 	for i in range(0,len(elements)-1):
 		print >> outfp, elements[i],
 	print >> outfp, elements[-1]
-	if elements[0]==str(runsteps):
+	if runsteps!=0 and elements[0]==str(runsteps):
 		break;
 	#numerator=numerator+1
 	#print numerator
 	#if numerator==runsteps:
 	#	break;
 
+inpfp.close()
+outfp.close()
 print " all data loaded, now you can dwuw with 'em cheers. :-) "
 
 

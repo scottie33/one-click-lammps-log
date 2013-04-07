@@ -14,7 +14,10 @@ or
 ./readlog.py example.log Step example.inputfornextcmd 
 ./create_html.bash example.inputfornextcmd
 
-for the [keyword], we shall set it the 1st keyword of dump keywords in your .log file, normally "Step"
+Attention:
+
+1, for the [keyword], we shall set it the 1st keyword of dump keywords in your .log file, normally "Step"
+2, please make sure only one [keyword] appear in your .log file.
 
 O(ne) C(lick) S(eries): Lammps .log file.
 Dependencies: bash, python, gnuplot;
