@@ -33,10 +33,15 @@ outfp = file(outfile,'w')
 
 flagkeyword=0
 runsteps=0
+logsteps=0
 while True:
 	line = inpfp.readline()
 	elements = line.split()
 	#print " ",elements," ... "
+	if len(elements)!=0 and elements[0] == "run" :
+		runsteps=int(elements[1])
+	if len(elements)!=0 and elements[0] == "thermo" :
+		logsteps=int(elements[1])
 	if len(elements)!=0 and elements[0] == keyword :
 		flagkeyword=1;
 		tempstr="echo \""
@@ -65,8 +70,6 @@ while True:
 		for i in range(0,len(elements)):
 			print "%7s" % elements[i],
 		print ""
-	if len(elements)!=0 and elements[0] == "run" :
-		runsteps=elements[1]
 	if flagkeyword==1:# and runsteps!=0 :
 		break;
 if flagkeyword==0:
@@ -74,25 +77,38 @@ if flagkeyword==0:
 	exit -1
 else :
 	if runsteps!=0:
-		print "\n there are",runsteps,"(or divided by a numb) data, here we go~"
+		print "\n there are",runsteps,"(or divided by a num) data, here we go~"
 	else:
 		print "\n start reading data without runsteps, but will end at \"Loop\""
+	if logsteps!=0:
+		print "\n every",logsteps,"steps a log row added~"
+	else:
+		print "\n we don't notice any \"thermo\" there." 
+		#exit(-1)
 
-#numerator = 0
+
+numrows=0
+numerator=0
+if runsteps!=0 and logsteps!=0:
+	numerator=0
+	numrows=runsteps/logsteps
+	print " there should be",numrows,"rows in this .log file."
+
 while True:
-	line = inpfp.readline()
-	elements = line.split()
+	line=inpfp.readline()
+	elements=line.split()
 	if elements[0]=="Loop":
 		break;
 	for i in range(0,len(elements)-1):
 		print >> outfp, elements[i],
 	print >> outfp, elements[-1]
-	if runsteps!=0 and elements[0]==str(runsteps):
-		break;
-	#numerator=numerator+1
-	#print numerator
-	#if numerator==runsteps:
+	#if runsteps!=0 and elements[0]==str(runsteps):
 	#	break;
+	if numrows!=0:
+		numerator=numerator+1
+		#print numerator
+		if numerator>numrows:
+			break;
 
 inpfp.close()
 outfp.close()
