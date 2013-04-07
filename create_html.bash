@@ -3,7 +3,7 @@
 if [ $# -lt 1 ]; then
 	echo " " 
 	echo " cmd filename "
-    echo " example: ./create_html.bash example.inputfornextcmd"
+    echo " example: ./create_html.bash example.outputfrompreviouscmd"
 	echo " if any problem, improvement made, or any Q, please contact me: leiw@ustc.edu.cn"
 	echo " "
 	exit -1
@@ -52,6 +52,7 @@ echo "	</body>" >> allfig.html
 echo "</html>" >> allfig.html
 
 echo " allfig.html created, please double-click to check it out."
+sleep 1
 open allfig.html
 
 exit
