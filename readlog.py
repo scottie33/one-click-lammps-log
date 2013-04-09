@@ -92,23 +92,45 @@ numerator=0
 if runsteps!=0 and logsteps!=0:
 	numerator=0
 	numrows=runsteps/logsteps
-	print " there should be",numrows,"rows in this .log file."
+	print " there should be",numrows,"rows in each run (if many, possible) this .log file."
+
+tempflag=0 #for end of file or not;
+tempindex=0 #for records;
 
 while True:
 	line=inpfp.readline()
-	elements=line.split()
+	if line: 
+		elements=line.split()
+	else:
+		print " end of file, loading over. 1"
+		break
 	if elements[0]=="Loop":
-		break;
+		print " Confronting \"Loop\", looking for next entry @TS =",
+		while True:
+			line=inpfp.readline()
+			if line:
+				#print line
+				elements=line.split()
+				if len(elements)!=0 and elements[0]==str(tempindex+logsteps):
+					#print elements[0],"=",str(tempindex+logsteps)
+					print str(tempindex+logsteps)
+					break
+			else:
+				#print " end of file, loading over."
+				tempflag=1
+				break;
+	if tempflag==1:
+		print " end of file, loading over. 2"
+		break
 	for i in range(0,len(elements)-1):
 		print >> outfp, elements[i],
 	print >> outfp, elements[-1]
-	#if runsteps!=0 and elements[0]==str(runsteps):
-	#	break;
-	if numrows!=0:
-		numerator=numerator+1
-		#print numerator
-		if numerator>numrows:
-			break;
+	tempindex=int(elements[0])
+	#if numrows!=0:
+	#	numerator=numerator+1
+	#	#print numerator
+	#	if numerator>numrows:
+	#		break;
 
 inpfp.close()
 outfp.close()

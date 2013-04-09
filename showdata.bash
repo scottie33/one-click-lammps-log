@@ -52,7 +52,7 @@ if [ ${col2index} -gt ${num} ]; then
 fi
 
 if [ -f "tempdata.gpl" ]; then
-	echo " temdata.gpl exist, now i delete it n gonna write a new one."
+	#echo " temdata.gpl exist, now i delete it n gonna write a new one."
 	rm tempdata.gpl
 fi
 
@@ -76,8 +76,8 @@ if [ $# -gt 7 ]; then
 
 fi
 
-echo " tempdata.gpl written successfully!"
+#echo " tempdata.gpl written successfully!"
 
 gnuplot draw_data.gpl
 
-echo " check out your [ ${col1name} ${col2name}.eps ] :-)"
+echo " check out your [ ${col1name} v.s. ${col2name}.eps ] :-)"

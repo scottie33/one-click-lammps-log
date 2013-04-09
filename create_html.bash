@@ -15,10 +15,17 @@ for i in `cat itemlist.lst`; do
 	echo " $num $i"
 done
 
+format="eps"
+
+if [ `ls *.$format | wc -l` -ne 0 ]; then
+	rm -f *.$format
+	echo " delete *.$format done!"
+fi
+
 for((i=1;i<${num};i++)); do
 	let tempnum=$i+1
 	./showdata.bash $1 1 ${tempnum}
-	echo " ./showdata.bash $1 1 ${tempnum}"
+	#echo " ./showdata.bash $1 1 ${tempnum}"
 done
 #echo -e " "`cat itemlist.lst `
 
@@ -41,7 +48,7 @@ for i in `ls *.eps`; do
 		echo " $i.$format exists, do nothing..."
 	else
 		convert -rotate 90 $i $i.$format
-		echo " $i was converted into $i.$format"
+		echo " $i was converted to $i.$format"
 	fi
 	echo "	<p>$i.$format</p><br>" >> allfig.html
 	echo "	<img src=\"$PWD/$i.$format\"><br>" >> allfig.html
