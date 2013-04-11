@@ -40,8 +40,8 @@ set mytics 2
 #set key left
 set key box
 #plot for [i=2:nrep:1] "probability_each.dat" u 1:i w filledcurves title "T".i
-plot inp u colx:coly w l lt 1 lw 4 lc rgb "gray" title "",\
-     inp u colx:coly smooth bezier w l lt 1 lw 1 lc rgb "black" title out#,\
+plot inp u colx:coly w l lt 1 lw 6 lc rgb "gray" title "",\
+     inp u colx:coly smooth bezier w l lt 1 lw 4 lc rgb "#003D79" title out#,\
      #"beta.dat" u 1:2 smooth bezier w l lt 2 lw 1 lc rgb "brown" title ""
 
 #plot "beta.dat" u 1:2 title "" smooth bezier w l lt 1 lw 6 lc rgb "gray"

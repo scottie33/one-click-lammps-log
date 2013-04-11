@@ -57,7 +57,7 @@ if [ -f "tempdata.gpl" ]; then
 fi
 
 echo "inp='${filename}'" > tempdata.gpl
-echo "out='${col1name}${col2name}'" >> tempdata.gpl
+echo "out='${col2name}-${col1name}'" >> tempdata.gpl
 echo "colx=${col1index}" >> tempdata.gpl
 echo "coly=${col2index}" >> tempdata.gpl
 echo "xlabeltext='${col1name}'" >> tempdata.gpl
@@ -80,4 +80,4 @@ fi
 
 gnuplot draw_data.gpl
 
-echo " check out your [ ${col1name} v.s. ${col2name}.eps ] :-)"
+echo " check out your [ ${col2name}-${col1name}.eps ] :)"

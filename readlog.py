@@ -104,16 +104,29 @@ while True:
 	else:
 		print " end of file, loading over. 1"
 		break
+	if len(elements) == 0:
+		continue # pass this line.
 	if elements[0]=="Loop":
-		print " Confronting \"Loop\", looking for next entry @TS =",
+		print " Confronting \"Loop\", found next entry @TS =",
 		while True:
 			line=inpfp.readline()
 			if line:
 				#print line
 				elements=line.split()
-				if len(elements)!=0 and elements[0]==str(tempindex+logsteps):
+				if len(elements)!=0 and elements[0] == keyword :
+				#if len(elements)!=0 and elements[0]==str(tempindex+logsteps):
 					#print elements[0],"=",str(tempindex+logsteps)
-					print str(tempindex+logsteps)
+					while True:
+						line=inpfp.readline()
+						elements=line.split()
+						if len(elements)!=0:
+							break # skip this line cuz this is the same line of the last output.
+					while True:
+						line=inpfp.readline()
+						elements=line.split()
+						if len(elements)!=0:
+							break # the real entry loaded.
+					print elements[0]
 					break
 			else:
 				#print " end of file, loading over."

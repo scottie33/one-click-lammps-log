@@ -5,7 +5,13 @@ after .dcd loaded by vmd: source doit.tcl
 
 you can use the following cli to see your data-fig:
 1, readlog.py
-3, create_html.bash 
+2, create_html.bash
+   dependencies:
+   a, draw_data.gpl 
+      please note, tempdata.gpl needed, 
+      so actually these 2 are important and portable for any drawing)  
+   b, showdata.bash
+
 just hit them in your command line to see 'how to'
 
 e.g.:
