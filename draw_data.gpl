@@ -1,4 +1,8 @@
 
+unset xtics
+unset ytics
+unset mxtics
+unset mytics
 reset
 
 out='outdata'
@@ -31,10 +35,14 @@ set ytics nomirror #font "UTF-8,12" #tc rgb "#880000"
 #set y2tics tc rgb "#008800"
 set xtics nomirror #font "UTF-8,12" #tc rgb "#0000ff"
 #xinterval=(xmax-xmin)/10
-#set xtics xinterval
+#set ytics 5
 
-set mxtics 10
-set mytics 2
+#set mxtics 5
+#set mytics 5
+
+#set offsets graph <left>, <right>, <top>, <bottom>
+#set offsets graph 0, 0, 5, 0
+
 #set grid xtics lt 0 lw 1 lc rgb "#0000ff"
 #set style fill transparent solid 0.1 noborder
 #set key left

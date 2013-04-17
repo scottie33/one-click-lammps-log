@@ -3,6 +3,7 @@
 if [ $# -lt 3 ]; then
 	echo " " 
 	echo " cmd filename col1index col2index [xmin] [xmax] [ymin] [ymax]"
+	echo " NOTE: 'xmin' = 'xmax' means ignoring axis adjusting and goto the next args."
 	echo " or you may just hit the cmd and see the itemlist"
 	echo " if any problem, improvement made, or any Q, please contact me: leiw@ustc.edu.cn"
 	echo " "
@@ -63,16 +64,22 @@ echo "coly=${col2index}" >> tempdata.gpl
 echo "xlabeltext='${col1name}'" >> tempdata.gpl
 echo "ylabeltext='${col2name}'" >> tempdata.gpl
 if [ $# -gt 4 ]; then 
-	echo "xmin='$6'" >> tempdata.gpl
+	echo "xmin='$4'" >> tempdata.gpl
 fi
 if [ $# -gt 5 ]; then 
-	echo "xmax='$7'" >> tempdata.gpl
+	echo "xmax='$5'" >> tempdata.gpl
+	if [ $4 -ne $5 ]; then
+		echo "set xrange [xmin:xmax]" >> tempdata.gpl
+	fi
 fi
 if [ $# -gt 6 ]; then 
-	echo "ymin='$8'" >> tempdata.gpl
+	echo "ymin='$6'" >> tempdata.gpl
 fi
 if [ $# -gt 7 ]; then 
-	echo "ymax='$9'" >> tempdata.gpl
+	echo "ymax='$7'" >> tempdata.gpl
+	if [ $6 -ne $7 ]; then
+		echo "set yrange [ymin:ymax]" >> tempdata.gpl
+	fi
 
 fi
 

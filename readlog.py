@@ -29,16 +29,20 @@ print ""
 print " 1, loading [",inpfile,"],\n 2, started from: \"",keyword,"\"\n 3, output: [",outfile,"].";
 
 inpfp = open(inpfile, 'r')
-outfp = file(outfile,'w')
+outfp = open(outfile, 'w')
 
 flagkeyword=0
 runsteps=0
 logsteps=0
 while True:
-	line = inpfp.readline()
-	elements = line.split()
+	line=inpfp.readline()
+	if line: 
+		elements=line.split()
+	else:
+		print " end of file, loading over. 1"
+		break
 	#print " ",elements," ... "
-	if len(elements)!=0 and elements[0] == "run" :
+	if len(elements)!=0 and elements[0] == "run" and elements[1][0:1] != '$' :
 		runsteps=int(elements[1])
 	if len(elements)!=0 and elements[0] == "thermo" :
 		logsteps=int(elements[1])
@@ -61,7 +65,8 @@ while True:
 		tempstr=tempstr+"\" > itemlist.lst"
 		print " 4,",tempstr;
 		os.system(tempstr);
-		print "   id",
+		
+		print "\n   id",
 		for i in range(0,len(elements)):
 			tempnum=i+1
 			print "%7d" % tempnum,
@@ -70,20 +75,21 @@ while True:
 		for i in range(0,len(elements)):
 			print "%7s" % elements[i],
 		print ""
+		print "\n check [ itemlist.lst ] for column name."
 	if flagkeyword==1:# and runsteps!=0 :
 		break;
 if flagkeyword==0:
 	print " no records in [",inpfile,"]."
-	exit -1
+	exit(-1)
 else :
 	if runsteps!=0:
 		print "\n there are",runsteps,"(or divided by a num) data, here we go~"
 	else:
 		print "\n start reading data without runsteps, but will end at \"Loop\""
 	if logsteps!=0:
-		print "\n every",logsteps,"steps a log row added~"
+		print " every",logsteps,"steps a log row added~"
 	else:
-		print "\n we don't notice any \"thermo\" there." 
+		print " we don't notice any \"thermo\" there." 
 		#exit(-1)
 
 
@@ -92,7 +98,7 @@ numerator=0
 if runsteps!=0 and logsteps!=0:
 	numerator=0
 	numrows=runsteps/logsteps
-	print " there should be",numrows,"rows in each run (if many, possible) this .log file."
+	print " there should be",numrows,"rows in each run (if many, possible) this .log file.\n"
 
 tempflag=0 #for end of file or not;
 tempindex=0 #for records;

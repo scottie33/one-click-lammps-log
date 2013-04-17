@@ -1,8 +1,12 @@
 
-pre-run: lmp2pdb.py data.data (generate .psf and .pdb for post-processing)
-after .dcd loaded by vmd: source doit.tcl
+pre-run: 
+1, lmp2pdb.py data.data (generate .psf and .pdb for post-processing)
+2, after .dcd loaded by vmd: source doit.tcl
 
+run:
+1, runlist.bash
 
+post-run:
 you can use the following cli to see your data-fig:
 1, readlog.py
 2, create_html.bash
@@ -11,18 +15,19 @@ you can use the following cli to see your data-fig:
       please note, tempdata.gpl needed, 
       so actually these 2 are important and portable for any drawing)  
    b, showdata.bash
-
+*, topology of the usage:
+               / create_html.bash
+   readlog.py {
+               \ getstress.py
 just hit them in your command line to see 'how to'
-
 e.g.:
-
-./readlog.py example.log
-./create_html.bash example.gnuplot.dat (this file is created by the last command)
-
+ ./readlog.py example.log
+ ./create_html.bash example.gnuplot.dat (this file is created by the last command)
 or 
+ ./readlog.py example.log Step example.inputfornextcmd 
+ ./create_html.bash example.inputfornextcmd
 
-./readlog.py example.log Step example.inputfornextcmd 
-./create_html.bash example.inputfornextcmd
+3, rdf.bash
 
 Attention:
 
